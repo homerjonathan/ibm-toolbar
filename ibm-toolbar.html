@@ -165,9 +165,10 @@ Custom property                                | Description                    
 
     <content></content>
   </template>
-  <script>
-    Polymer({
-      is: 'ibm-toolbar'
-    });
-  </script>
 </dom-module>
+<script>
+    IBMToolbar extends Polymer.Element {
+            static get is() { return 'ibm-toolbar'; }
+    }
+    customElements.define(IBMToolbar.is, IBMToolBar);
+</script>
