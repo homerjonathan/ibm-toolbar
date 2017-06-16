@@ -1,5 +1,4 @@
-<!--
-@license
+<!-- @license
 Copyright (c) 2016 The IBM Research authors. All rights reserved.
 This code may only be used under the MIT style license found at https://ibmresearch.github.io/LICENSE.txt
 The complete set of authors may be found at https://ibmresearch.github.io/AUTHORS.txt
@@ -50,7 +49,7 @@ Custom property                                | Description                    
 
 <dom-module id="ibm-toolbar">
   <template>
-    <style>
+    <style is="custom-style">
       :host {
         @apply --layout-horizontal;
         @apply --layout-center;
@@ -60,6 +59,8 @@ Custom property                                | Description                    
         height: 50px;
         padding: 0 20px;
 
+        /*pointer-events: none;*/
+
         color: var(--ibm-toolbar-color, #323232);
         border-bottom: 1px solid var(--ibm-toolbar-border-bottom-color, #e5e5e5);
         background-color: var(--ibm-toolbar-background-color, #ffffff);
@@ -68,42 +69,42 @@ Custom property                                | Description                    
         font-size: 16px;
       }
 
-      ::slotted > * {
+      ::slotted ( * ) {
         pointer-events: auto;
       }
 
-      ::slotted > [main-title] {
-        @apply --layout-inline;
-        @apply --layout-flex;
+      ::slotted([main-title]) {
+        @apply (--layout-inline);
+        @apply (--layout-flex);
 
         white-space: nowrap;
 
         font-weight: bold;
       }
 
-      ::slotted > [spacer] {
+      ::slotted([spacer]) {
         margin-left: 20px;
       }
 
-      ::slotted > [bottom-item] {
+      ::slotted([bottom-item]) {
         position: absolute;
         right: 0;
         bottom: 0;
         left: 0;
       }
 
-      ::slotted > [top-item] {
+      ::slotted([top-item]) {
         position: absolute;
         top: 0;
         right: 0;
         left: 0;
       }
 
-      ::slotted ibm-toolbar-logo {
+      ::slotted( ibm-toolbar-logo ) {
         height: 24px;
       }
 
-      ::slotted [selectable-item] {
+      ::slotted([selectable-item]) {
         @apply --layout-inline;
         @apply --layout-center;
 
@@ -125,16 +126,16 @@ Custom property                                | Description                    
         -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
       }
 
-      ::slotted [selectable-item]:focus {
+      ::slotted([selectable-item]:focus) {
         color: var(--ibm-toolbar-selectable-item-color-focused, #3b6caa);
         outline: none;
       }
 
-      ::slotted [selectable-item]:hover {
+      ::slotted([selectable-item]:hover) {
         color: var(--ibm-toolbar-selectable-item-color-focused, #3b6caa);
       }
 
-      ::slotted [selectable-item]::before {
+      ::slotted([selectable-item]::before) {
         position: absolute;
         bottom: 0;
 
@@ -152,16 +153,15 @@ Custom property                                | Description                    
         background: var(--ibm-toolbar-selectable-item-color-focused, #3b6caa);
       }
 
-      ::slotted [selectable-item]:focus::before {
+      ::slotted([selectable-item]:focus::before) {
         transform: translate3d(0, 0, 0);
       }
 
-      ::slotted [selectable-item]:hover::before {
+      ::slotted([selectable-item]:hover::before) {
         transform: translate3d(0, 0, 0);
       }
     </style>
-
-    <slot></slot>
+      <slot></slot>
   </template>
 </dom-module>
 <script>
